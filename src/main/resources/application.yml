@@ -1,0 +1,24 @@
+app:
+  db:
+    url: jdbc:postgresql://localhost:5432/naumendemo
+    username: postgres
+    password: 123
+  external:
+    reconnectattempts: 10
+    serviceapi: http://external.service/api/v1
+server:
+  port: 8080
+spring:
+  datasource:
+    url: ${app.db.url}
+    username: ${app.db.username}
+    password: ${app.db.password}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl: validate
+  flyway:
+    enabled: true
+    url: ${app.db.url}
+    user: ${app.db.username}
+    password: ${app.db.password}
